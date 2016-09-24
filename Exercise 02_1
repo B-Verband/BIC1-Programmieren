@@ -1,3 +1,4 @@
+```c
 #include <stdio.h>
 
 int funktion_verdopple(int i);
@@ -161,4 +162,4 @@ int funktion_potenziere(int i)
 {
     return i*i;
 }
-
+```
