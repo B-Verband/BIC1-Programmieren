@@ -3,7 +3,6 @@
 int funktion_verdopple(int i);
 int funktion_potenziere(int i);
 
-
 int main(int argc, char* argv[])
 {
     int ergebnis;
