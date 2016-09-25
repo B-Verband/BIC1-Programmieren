@@ -33,9 +33,9 @@
 		scanf("%lf", &c);
 
 		printf("a * b * c = %.1f\n", multiplikation_von_drei_reellen_Zahlen(a, b, c));
-		// "%.1f" -> das .1 rundet die Kommazahl auf eine Nachkommastelle
-		// laut Rangtabelle wird als erstes die Funktion ausgewertet; wenn die Eingaben z.B. 1, 2 und 3 sind, ergibt das:
-		//  printf("a * b * c = %.1f\n", 6.0);
+		//	- zu %.1f	-> das .1 rundet die Kommazahl auf eine Nachkommastelle
+		// 	- zur Ausertungsreihenfolge: laut Rangtabelle wird als erstes die Funktion ausgewertet; wenn die Eingaben z.B. 1, 2 und 3 sind, ergibt das:
+		// 		printf("a * b * c = %.1f\n", 6.0);
 	}
 
 	double multiplikation_von_drei_reellen_Zahlen(double a, double b, double c)
