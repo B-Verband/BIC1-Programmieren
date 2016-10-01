@@ -81,9 +81,9 @@ int main(int argc, char* argv[])
 	scanf("%lf", &inv);
 	printf("Betrachtungsdauer in Perioden: ");
 	scanf("%d", &t);
-	printf("Ertragswert (gilt fuer alle Jahre): ");
+	printf("Ertragswert (gilt fuer alle Perioden): ");
 	scanf("%lf", &ewt);
-	printf("Anschaffungsausgaben (gilt fuer alle Jahre): ");
+	printf("Anschaffungsausgaben (gilt fuer alle Perioden): ");
 	scanf("%lf", &at);
 	printf("Kalkulationszinssatz in Prozent: ");
 	scanf("%lf", &i);
