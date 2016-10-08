@@ -70,13 +70,11 @@ void dividieren(double b, double a)
 		return;
 	}
 	printf("\tb / a = %f\n", b / a);
-
 }
 
 void modulo(double a, double b)
 {
 	printf("\ta %% b = %d\n", (int) a % (int) b);
-
 }
 
 void zweier_potenz(double a)
