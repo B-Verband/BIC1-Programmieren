@@ -25,30 +25,27 @@
 /* Programmcode hier einfügen */
 #include <stdio.h>
 
-#define ANZAHL 13
+#define ANZAHL 10
 
 int main(int argc, char* argv[])
 {
-	int i = 0, j = 0;
-	for (i = 0; i <= ANZAHL; i++)
+	int i = 1, j = 0;
+
+	/* Erste Zeile */
+	printf("%4c", '*');
+	for (j = 1; j <= ANZAHL; j++) {
+		printf("%4d", i * j);
+	}
+
+	/* Restliche Zeilen */
+	for (i = 1; i <= ANZAHL; i++)
 	{
-		/* Erste Zeile */
-		if (i == 0) {
-			printf("%4c", '*');
-			for (j = 1; j <= ANZAHL; j++) {
-				printf("%4d", (i + 1) * j);
-			}
+		/* Erste Spalte */
+		printf("\n%4d", i);
+		/* Restliche Spalten */
+		for (j = 1; j <= ANZAHL; j++) {
+			printf("%4d", j * i);
 		}
-		/* Restliche Zeilen */
-		else {
-			/* Erste Spalte */
-			printf("%4d", i);
-			/* Restliche Spalten */
-			for (j = 1; j <= ANZAHL; j++) {
-				printf("%4d", j * i);
-			}
-		}
-		printf("\n");
 	}
 
 	return 0;
