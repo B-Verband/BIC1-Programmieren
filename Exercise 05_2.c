@@ -31,18 +31,18 @@ int main(int argc, char* argv[])
 {
 	int i = 1, j = 0;
 
-	/* Erste Zeile */
+	/* Zeilenbeschriftung */
 	printf("%4c", '*');
 	for (j = 1; j <= ANZAHL; j++) {
 		printf("%4d", i * j);
 	}
 
-	/* Restliche Zeilen */
+	/* Zeilen */
 	for (i = 1; i <= ANZAHL; i++)
 	{
-		/* Erste Spalte */
+		/* Spaltenbeschriftung */
 		printf("\n%4d", i);
-		/* Restliche Spalten */
+		/* Spalten */
 		for (j = 1; j <= ANZAHL; j++) {
 			printf("%4d", j * i);
 		}
