@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
 	int teiler = 1;
 
 	teiler = 1;
-	while (teiler <= TEILER_MAX)
+	while (teiler <= TEILER_MAX && getestete_zahl > 0)
 	{
 		if (getestete_zahl % teiler == 0)
 		{
