@@ -68,7 +68,7 @@ double quaderoberflaeche(double a, double b, double c);
 /*************************************** modul.c ***************************************/
 #include "modul.h"
 
-#define QUADEROBERFLAECHE(a, b, c) 2*(a*b+b*c+c*a)
+#define QUADEROBERFLAECHE(a, b, c) 2*((a)*(b)+(b)*(c)+(c)*(a))
 
 const double PI = 3.14159;
 
