@@ -12,6 +12,7 @@ typedef struct v3d {
 	double y;
 	double z;
 } v3d;
+
 v3d add(v3d a, v3d b);
 v3d subtract(v3d a, v3d b);
 double length(v3d v);
