@@ -1,3 +1,9 @@
+/* unsafe warning wird ausgeblendet */
+#define _CRT_SECURE_NO_WARNINGS 
+
+/* Programmcode hier einfügen */
+#include <stdio.h>
+
 int main(int argc, char* argv[])
 {
 	int summe = 0;
