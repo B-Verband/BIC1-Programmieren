@@ -1,3 +1,5 @@
+/* Exercise 10_1 */
+
 /* unsafe warning wird ausgeblendet */
 #define _CRT_SECURE_NO_WARNINGS 
 
@@ -7,12 +9,14 @@
 int main(int argc, char* argv[])
 {
 	int summe = 0;
+	
 	if (argc == 2) {
 		int i = 0;
-		for (i = 1; i <= atoi(argv[1]); i++) summe = summe + i;
-		printf("%d", summe);
+		for (i = 1; i <= atoi(argv[1]); i++) summe += i;
+		printf("Summe: %d\n", summe);
 	}
 	else {
-		printf("Fehler");
+		printf("Fehler\n");
 	}
+	return 0;
 }
