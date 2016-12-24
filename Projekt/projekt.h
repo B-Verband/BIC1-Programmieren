@@ -1,9 +1,6 @@
 #ifndef PROJEKT_H
 #define PROJEKT_H
 
-	/* unsafe warning wird ausgeblendet */
-	#define _CRT_SECURE_NO_WARNINGS
-
 	/* Defines */
 	#define HASHTABLE_MAX 3
 	#define NACHNAME_MAX 13
