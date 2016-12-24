@@ -5,7 +5,7 @@
 	#define _CRT_SECURE_NO_WARNINGS
 
 	/* Defines */
-	#define HASHTABLE_MAX 50
+	#define HASHTABLE_MAX 3
 	#define NACHNAME_MAX 13
 
 	/* Structs und Enums */
