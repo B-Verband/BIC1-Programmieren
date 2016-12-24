@@ -26,6 +26,9 @@
 	Datenstruktur: (10 Punkte)
 */
 
+/* unsafe warning wird ausgeblendet */
+#define _CRT_SECURE_NO_WARNINGS
+
 /* Programmcode hier einfügen */
 #include "projekt.h"
 
