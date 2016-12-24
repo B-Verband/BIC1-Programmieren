@@ -1,2 +1,1 @@
-# BIC1-Programmieren
-1. Semester
+# BIC1-Programmieren, 1. Semester
