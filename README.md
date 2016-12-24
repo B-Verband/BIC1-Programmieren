@@ -1,2 +1,2 @@
 # BIC1-Programmieren
-Sammlung der Exercises
+1. Semester
