@@ -1,4 +1,4 @@
-void minimum(TNode *tree)
+void minimum_(TNode *tree)
 {
 	if (tree->pleft != NULL)
 	{
