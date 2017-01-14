@@ -202,9 +202,9 @@ status_t searchInList(node_t *node, unsigned int matrikelnummer, char *nachname)
 	{
 		return NOT_FOUND;
 	}
-	else if (node->data.matrikelnummer == matrikelnummer)
+	else if (node->matrikelnummer == matrikelnummer)
 	{
-		strcpy(nachname, node->data.nachname);
+		strcpy(nachname, node->nachname);
 		return FOUND;
 	}
 	return searchInList(node->next, matrikelnummer, nachname);
@@ -227,8 +227,8 @@ void printList(node_t *node)
 	{
 		printf(
 			"   Name: %13s \t\tMatr.-Nr.: %4d \t\t(next: %p)\n",
-			node->data.nachname,
-			node->data.matrikelnummer,
+			node->nachname,
+			node->matrikelnummer,
 			node->next
 		);
 		printList(node->next);
