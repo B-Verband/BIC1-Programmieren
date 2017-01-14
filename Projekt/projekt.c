@@ -104,8 +104,8 @@ node_t *createNode(int matrikelnummer, char *nachname)
 	node_t *new = malloc(sizeof(node_t));
 	if (new == NULL) return MALLOC_ERROR;
 
-	new->data.matrikelnummer = matrikelnummer;
-	strcpy(new->data.nachname, nachname);
+	new->matrikelnummer = matrikelnummer;
+	strcpy(new->nachname, nachname);
 	new->next = NULL;
 
 	return new;
@@ -129,7 +129,7 @@ status_t insert(node_t *hashtable[], int size, unsigned int matrikelnummer, char
 
 status_t insertToList(node_t *node, node_t *new)
 {
-	if (node->data.matrikelnummer == new->data.matrikelnummer)
+	if (node->matrikelnummer == new->matrikelnummer)
 	{
 		free(new);
 		return ALREADY_EXISTS;
@@ -164,7 +164,7 @@ status_t delete(node_t *hashtable[], int size, unsigned int matrikelnummer)
 
 status_t deleteFromList(node_t **previous, node_t *node, unsigned int matrikelnummer)
 {
-	if (node->data.matrikelnummer == matrikelnummer)
+	if (node->matrikelnummer == matrikelnummer)
 	{
 		if (node->next == NULL) {
 			*previous = NULL;
