@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <malloc.h>
 #include "projekt.h"
 
 void initHashtable(node_t *hashtable[], int size)
