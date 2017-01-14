@@ -6,12 +6,9 @@
 	#define NACHNAME_MAX 13
 
 	/* Structs und Enums */
-	struct student {
+	struct node {
 		unsigned int matrikelnummer;
 		char nachname[NACHNAME_MAX];
-	};
-	struct node {
-		struct student data;
 		struct node_t *next;
 	};
 	enum status { MALLOC_ERROR, FOUND, NOT_FOUND, INSERTED, ALREADY_EXISTS, DELETED };
