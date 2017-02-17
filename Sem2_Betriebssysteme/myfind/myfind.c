@@ -75,12 +75,14 @@ void do_dir(const char *dir_name, const char * const * parms)
 	if((directory = opendir(dir_name)) != NULL) {
 		while((directory_entry = readdir(directory)) != NULL) {
 
+			/* get full filename */
 			strcpy(filename, dir_name);					/* ergibt zB: /home/FH */
 			if(filename[strlen(filename)-1] != '/') {
 				strcat(filename, "/");					/* ergibt zB: /home/FH/ */
 			}
 			strcat(filename, directory_entry->d_name);	/* ergibt zB: /home/FH/file.txt */
-
+	
+			/* action: -print */
 			if(1) {
 				printf("%s\n", filename);
 			}
