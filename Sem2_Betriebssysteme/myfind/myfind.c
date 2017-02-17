@@ -72,7 +72,9 @@ void do_dir(const char *dir_name, const char * const * parms)
 	filetype_t filetype;
 	char filename[2048];
 
+	/* open directory */
 	if((directory = opendir(dir_name)) != NULL) {
+		/* iterate through files */
 		while((directory_entry = readdir(directory)) != NULL) {
 
 			/* get full filename */
@@ -112,7 +114,7 @@ void do_dir(const char *dir_name, const char * const * parms)
 				case SOCKET:
 					break;
 				default:
-					printf("error: file has no no file type\n");
+					printf("error: file has no file type\n");
 			}
 		}
 		closedir(directory);
