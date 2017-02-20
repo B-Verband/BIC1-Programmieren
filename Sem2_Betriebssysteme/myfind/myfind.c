@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <dirent.h>
 #include <string.h>	// für strcpy() und strcat()
+#include <errno.h>
 
 /* jede Datei im durchsuchten Ordner und in seinen Unterordnern muss einen der folgenden "file types" haben; ansonsten: ERROR_NO_VALID_FILE_TYPE */
 typedef enum {
@@ -27,25 +28,31 @@ void usage(void);
 
 int main(int argc, const char **argv)
 {
-	const char *path;
+	const char *file_or_directory_name;
+	filetype_t filetype;
 	const char *actions;
 
-	/* get path */
+	/* get name of file or directory */
 	if(argc > 1) {
-		path = argv[1];
-		/* if not path */
-		if(get_filetype(path) != DIRECTORY) {
-			printf("Error: second argument has to be a directory.\n");
-			printf("%s is not a directory.\n", path);
-			usage();
+		
+		file_or_directory_name = argv[1];
+		
+		/* get filetype */
+		filetype = get_filetype(file_or_directory_name);
+		
+		/* exit if it is no file or directory */
+		if(filetype != DIRECTORY && filetype != REGULAR_FILE) {
+			printf("Error: file or directory not found.\n"); usage();
 			return EXIT_FAILURE;
 		}
+		
+	/* exit if no second argument */
 	} else {
-		printf("error: no path\n");
-		exit(1);
+		printf("Error: enter a file or directory\n"); usage();
+		return EXIT_FAILURE;
 	}
 
-	/* get actions */
+	/* actions */
 	if(argc > 2) {
 		actions = argv[2];
 	} else {
@@ -53,18 +60,11 @@ int main(int argc, const char **argv)
 	}
 
 	/* recursive function "do_dir" */
-	do_dir(path, &actions);
+	do_dir(file_or_directory_name, &actions);
 
 	return 0;
 }
 
-/*
-const char * const * parms 	->	pointer to constant pointer to constant char
-					wozu auch immer...
-					deswegen muss main so ausschauen (sonst funktioniert es nicht):
-						main(int argc, const char **argv)
-					-> also "const char" statt "char"
-*/
 void do_dir(const char *dir_name, const char * const * parms)
 {
 	DIR *directory;
@@ -74,6 +74,7 @@ void do_dir(const char *dir_name, const char * const * parms)
 
 	/* open directory */
 	if((directory = opendir(dir_name)) != NULL) {
+		
 		/* iterate through files */
 		while((directory_entry = readdir(directory)) != NULL) {
 
@@ -114,7 +115,7 @@ void do_dir(const char *dir_name, const char * const * parms)
 				case SOCKET:
 					break;
 				default:
-					printf("error: file has no file type\n");
+					printf("Error: file has no file type\n");
 			}
 		}
 		closedir(directory);
