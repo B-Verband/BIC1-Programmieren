@@ -75,6 +75,7 @@ void do_dir(const char *dir_name, const char * const * parms)
 	/* open directory */
 	if((directory = opendir(dir_name)) != NULL) {
 		
+		errno = 0;
 		/* iterate through files */
 		while((directory_entry = readdir(directory)) != NULL) {
 
@@ -85,7 +86,7 @@ void do_dir(const char *dir_name, const char * const * parms)
 			}
 			strcat(filename, directory_entry->d_name);	/* ergibt zB: /home/FH/file.txt */
 	
-			/* action: -print */
+			/* action ist immer: -print */
 			if(1) {
 				printf("%s\n", filename);
 			}
@@ -118,7 +119,17 @@ void do_dir(const char *dir_name, const char * const * parms)
 					printf("Error: file has no file type\n");
 			}
 		}
-		closedir(directory);
+		
+		/* Fehlerbehandlung */
+		if(errno != NULL) {
+			printf("Error: could not read all files in directory\n");
+		}
+		
+		/* close directory */
+		if(closedir(directory) == -1) {
+			printf("Error: could not close directory\n");	
+		}
+		
 	} else {
 		printf("Error: could not open directory '%s'\n", dir_name);
 	}
