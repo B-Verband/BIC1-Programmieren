@@ -20,7 +20,8 @@ typedef enum {
 } filetype_t;
 
 /* so in Angabe vorgegeben */
-void do_dir(const char *dir_name, const char * const * parms);
+void do_file(const char *file_name, const char * const * parms);
+//void do_dir(const char *dir_name, const char * const * parms);
 /* bekommt einen Dateipfad (zB: /home/bla.txt) und gibt den "file type" (zB: REGULAR_FILE) zurück*/
 filetype_t get_filetype(const char *path);
 /* wenn "myfind" falsch aufgerufen wurde, gibt diese Funktion aus, wie man "myfind" verwenden soll */
@@ -28,28 +29,30 @@ void usage(void);
 
 int main(int argc, const char **argv)
 {
-	const char *file_or_directory_name;
+	const char *file_name;
 	filetype_t filetype;
 	const char *actions;
-
+	
+	if(argc == 0) {
+		printf("Error: ???.\n"); usage();
+		return EXIT_FAILURE;
+	}
+	else if(argc == 1) {
+		do_file(".\0", &actions);
+		return 0;
+	}
 	/* get name of file or directory */
-	if(argc > 1) {
-		
-		file_or_directory_name = argv[1];
+	else {
+		file_name = argv[1];
 		
 		/* get filetype */
-		filetype = get_filetype(file_or_directory_name);
+		filetype = get_filetype(file_name);
 		
 		/* exit if it is no file or directory */
 		if(filetype != DIRECTORY && filetype != REGULAR_FILE) {
 			printf("Error: file or directory not found.\n"); usage();
 			return EXIT_FAILURE;
 		}
-		
-	/* exit if no second argument */
-	} else {
-		printf("Error: enter a file or directory\n"); usage();
-		return EXIT_FAILURE;
 	}
 
 	/* actions */
@@ -60,18 +63,18 @@ int main(int argc, const char **argv)
 	}
 
 	/* recursive function "do_dir" */
-	do_dir(file_or_directory_name, &actions);
+	do_file(file_name, &actions);
 
 	return 0;
 }
 
-void do_dir(const char *dir_name, const char * const * parms)
+void do_file(const char *dir_name, const char * const * parms)
 {
 	DIR *directory;
 	struct dirent *directory_entry;
 	filetype_t filetype;
 	char filename[2048];
-
+	
 	/* open directory */
 	if((directory = opendir(dir_name)) != NULL) {
 		
@@ -102,7 +105,7 @@ void do_dir(const char *dir_name, const char * const * parms)
 						strcmp(directory_entry->d_name, ".") && 
 						strcmp(directory_entry->d_name, ".."))
 					{
-						do_dir(filename, parms);
+						do_file(filename, parms);
 					}
 					break;
 				case CHARACTER_DEVICE:
@@ -121,7 +124,7 @@ void do_dir(const char *dir_name, const char * const * parms)
 		}
 		
 		/* Fehlerbehandlung */
-		if(errno != NULL) {
+		if(errno != 0) {
 			printf("Error: could not read all files in directory\n");
 		}
 		
